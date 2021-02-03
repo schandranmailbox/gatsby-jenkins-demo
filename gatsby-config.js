@@ -25,6 +25,12 @@ module.exports = {
        */
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
+        schema: {
+          timeout: 1000000, // add a larger timout
+          perPage: 100, // this will be used as limit on the queries.
+          requestConcurrency: 5, // currently set to undefined
+          previewRequestConcurrency: 2, // currently set to undefined
+        },
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
